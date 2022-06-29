@@ -12,8 +12,7 @@ def add_car(request):
     if request.method == 'POST':
         form = AddCarForm(request.POST)
         if form.is_valid():
-            brand1 = request.POST['brand']
-            brand = Brand.objects.filter(name=brand1).first()
+            brand = Brand.objects.get(name=request.POST['brand'])
             model = form.cleaned_data['model']
             engine_type = form.cleaned_data['engine_type']
             engine_capacity = form.cleaned_data['engine_capacity']
